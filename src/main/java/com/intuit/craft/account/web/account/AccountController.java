@@ -2,8 +2,6 @@ package com.intuit.craft.account.web.account;
 
 import com.intuit.craft.account.core.gateway.web.AccountWebGateway;
 import com.intuit.craft.account.core.model.Account;
-import com.intuit.craft.account.core.service.AccountService;
-import jdk.jfr.Name;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
