@@ -6,7 +6,7 @@ public class AccountWebDto {
     private String category;
     private String username;
     private String email;
-    private boolean favourite;
+    private boolean favorite;
     private long lastAccessed;
 
     public String getId() {
@@ -41,12 +41,12 @@ public class AccountWebDto {
         this.email = email;
     }
 
-    public boolean isFavourite() {
-        return favourite;
+    public boolean isFavorite() {
+        return favorite;
     }
 
-    public void setFavourite(boolean favourite) {
-        this.favourite = favourite;
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     public long getLastAccessed() {

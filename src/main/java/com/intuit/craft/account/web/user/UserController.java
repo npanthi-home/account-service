@@ -22,11 +22,13 @@ public class UserController {
     private UserWebDtoTransformer transformer;
 
     @PostMapping("/user")
+    @CrossOrigin(origins = "*")
     public UserWebDto create(@RequestBody UserWebDto dto) {
         return transformer.to(gateway.create(transformer.from(dto)));
     }
 
     @GetMapping("/user/{userId}")
+    @CrossOrigin(origins = "*")
     public UserWebDto get(@PathVariable String userId) {
         Optional<User> savedUser = gateway.get(userId);
         return savedUser.map((user) -> transformer.to(user)).orElse(null);

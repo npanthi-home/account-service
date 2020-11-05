@@ -23,33 +23,40 @@ public class AccountController {
     private AccountWebDtoTransformer transformer;
 
     @PostMapping("/account")
+    @CrossOrigin(origins = "*")
     public AccountWebDto save(@RequestBody AccountWebDto accountDto) {
         return transformer.to(gateway.save(transformer.from(accountDto)));
     }
 
     @GetMapping("/account/owner/{ownerId}")
-    public List<AccountWebDto> getAccounts(@PathVariable String ownerId, @RequestParam("p") Integer pageNumber, @RequestParam("s") Integer pageSize) {
-        Optional<List<Account>> accounts;
-        if(pageNumber != null && pageSize != null) {
-            accounts = gateway.getAccounts(ownerId, pageNumber, pageSize);
-        } else {
-            accounts = gateway.getAccounts(ownerId);
-        }
-
+    @CrossOrigin(origins = "*")
+    public List<AccountWebDto> getAccounts(@PathVariable String ownerId) {
+        Optional<List<Account>> accounts = gateway.getAccounts(ownerId);
         if(accounts.isPresent()) {
             return transformer.to(accounts.get());
         }
         return new ArrayList<>();
     }
 
+//    @GetMapping("/account/owner/{ownerId}")
+//    public List<AccountWebDto> getAccounts(@PathVariable String ownerId, @RequestParam("p") Integer pageNumber, @RequestParam("s") Integer pageSize) {
+//        Optional<List<Account>> accounts = gateway.getAccounts(ownerId, pageNumber, pageSize);
+//        if(accounts.isPresent()) {
+//            return transformer.to(accounts.get());
+//        }
+//        return new ArrayList<>();
+//    }
+
     @PutMapping("/account/favorite/{favoriteStatus}")
+    @CrossOrigin(origins = "*")
     public AccountWebDto markFavorite(@RequestBody AccountWebDto accountDto, @PathVariable boolean favoriteStatus) {
         Optional<Account> account = gateway.markFavorite(transformer.from(accountDto), favoriteStatus);
         return account.map(value -> transformer.to(value)).orElse(null);
     }
 
     @PutMapping("/account/access")
-    public AccountWebDto access(AccountWebDto accountDto) {
+    @CrossOrigin(origins = "*")
+    public AccountWebDto access(@RequestBody AccountWebDto accountDto) {
         Optional<Account> account = gateway.access(transformer.from(accountDto));
         return account.map(value -> transformer.to(value)).orElse(null);
     }
