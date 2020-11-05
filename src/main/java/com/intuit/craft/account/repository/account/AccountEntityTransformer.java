@@ -14,7 +14,7 @@ import java.time.ZoneOffset;
 @Singleton
 @Named(AccountEntityTransformer.BEAN_NAME)
 public class AccountEntityTransformer implements ListTransformer<Account, AccountEntity> {
-    public static final String BEAN_NAME = "com.intuit.craft.account.web.account.AccountWebDtoTransformer";
+    public static final String BEAN_NAME = "com.intuit.craft.account.repository.account.AccountEntityTransformer";
 
     @Inject
     @Named(UserEntityTransformer.BEAN_NAME)

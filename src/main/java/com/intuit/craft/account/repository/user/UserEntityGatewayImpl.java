@@ -5,8 +5,11 @@ import com.intuit.craft.account.core.model.User;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.inject.Singleton;
 import java.util.Optional;
 
+@Singleton
+@Named(UserEntityGateway.BEAN_NAME)
 public class UserEntityGatewayImpl implements UserEntityGateway {
 
     @Inject

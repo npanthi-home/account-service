@@ -1,12 +1,17 @@
 package com.intuit.craft.account.repository.user;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import java.util.UUID;
 
+@Entity
 public class UserEntity {
     @Id
+    @Column(name = "id")
     private String id;
-    @Column
+    @Column(name = "username")
     private String username;
 
     public String getId() {
@@ -23,5 +28,10 @@ public class UserEntity {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @PrePersist
+    public void autofill() {
+        this.setId(UUID.randomUUID().toString());
     }
 }

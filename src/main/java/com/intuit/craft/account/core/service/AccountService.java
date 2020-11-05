@@ -29,4 +29,12 @@ public class AccountService {
     public Optional<List<Account>> getAccounts(String ownerId, int pageNumber, int pageSize) {
         return gateway.get(ownerId, pageNumber, pageSize);
     }
+
+    public Optional<Account> markFavorite(Account account, boolean favoriteStatus) {
+        return gateway.markFavorite(account, favoriteStatus);
+    }
+
+    public Optional<Account> access(Account account) {
+        return gateway.access(account);
+    }
 }

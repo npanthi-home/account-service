@@ -2,23 +2,25 @@ package com.intuit.craft.account.repository.account;
 
 import com.intuit.craft.account.repository.user.UserEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.UUID;
 
+@Entity
 public class AccountEntity {
     @Id
+    @Column(name = "id")
     private String id;
-    @Column
+    @Column(name = "category")
     private String category;
-    @Column
+    @Column(name = "username")
     private String username;
-    @Column
+    @Column(name = "email")
     private String email;
-    @Column
+    @Column(name = "favorite")
     private boolean favorite;
-    @Column
+    @Column(name = "last_accessed")
     private long lastAccessed;
-    @Column
+    @ManyToOne
     private UserEntity owner;
 
     public String getId() {
@@ -75,5 +77,10 @@ public class AccountEntity {
 
     public void setOwner(UserEntity owner) {
         this.owner = owner;
+    }
+
+    @PrePersist
+    public void autofill() {
+        this.setId(UUID.randomUUID().toString());
     }
 }

@@ -45,7 +45,7 @@ public class AccountEntityGatewayImpl implements AccountEntityGateway {
 
     @Override
     public Optional<List<Account>> get(String ownerId, int pageNumber, int pageSize) {
-        return Optional.empty();
+        return get(ownerId);
     }
 
     @Override
