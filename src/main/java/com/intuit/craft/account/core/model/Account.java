@@ -1,4 +1,4 @@
-package com.intuit.craft.account.model;
+package com.intuit.craft.account.core.model;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

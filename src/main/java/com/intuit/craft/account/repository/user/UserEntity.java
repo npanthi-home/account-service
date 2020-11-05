@@ -1,7 +1,12 @@
-package com.intuit.craft.account.model;
+package com.intuit.craft.account.repository.user;
 
-public class User {
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+public class UserEntity {
+    @Id
     private String id;
+    @Column
     private String username;
 
     public String getId() {

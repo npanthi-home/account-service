@@ -1,11 +1,8 @@
-package com.intuit.craft.account.gateway.web.dto;
-
-import com.intuit.craft.account.model.Category;
-
-import java.time.LocalDateTime;
+package com.intuit.craft.account.web.account;
 
 public class AccountWebDto {
     private String id;
+    private String ownerId;
     private String category;
     private String username;
     private String email;
@@ -58,5 +55,13 @@ public class AccountWebDto {
 
     public void setLastAccessed(long lastAccessed) {
         this.lastAccessed = lastAccessed;
+    }
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 }

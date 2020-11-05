@@ -1,14 +1,19 @@
-package com.intuit.craft.account.gateway.web.transformer;
+package com.intuit.craft.account.web.account;
 
-import com.intuit.craft.account.gateway.web.dto.AccountWebDto;
-import com.intuit.craft.account.model.Account;
-import com.intuit.craft.account.model.Category;
-import com.intuit.craft.account.model.transformer.ListTransformer;
+import com.intuit.craft.account.core.model.Account;
+import com.intuit.craft.account.core.model.Category;
+import com.intuit.craft.account.core.transformer.ListTransformer;
 
+import javax.inject.Named;
+import javax.inject.Singleton;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
+@Singleton
+@Named(AccountWebDtoTransformer.BEAN_NAME)
 public class AccountWebDtoTransformer implements ListTransformer<Account, AccountWebDto> {
+    public static final String BEAN_NAME = "com.intuit.craft.account.web.account.AccountWebDtoTransformer";
+
     @Override
     public AccountWebDto to(Account account) {
         AccountWebDto accountWebDto = new AccountWebDto();
@@ -19,6 +24,7 @@ public class AccountWebDtoTransformer implements ListTransformer<Account, Accoun
         accountWebDto.setEmail(account.getEmail());
         accountWebDto.setFavourite(account.isFavorite());
         accountWebDto.setLastAccessed(account.getLastAccessed().toEpochSecond(ZoneOffset.UTC));
+        accountWebDto.setOwnerId(account.getOwner().getId());
 
         return accountWebDto;
     }

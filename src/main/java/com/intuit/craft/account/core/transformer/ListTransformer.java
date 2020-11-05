@@ -1,4 +1,4 @@
-package com.intuit.craft.account.model.transformer;
+package com.intuit.craft.account.core.transformer;
 
 import java.util.List;
 import java.util.stream.Collectors;
